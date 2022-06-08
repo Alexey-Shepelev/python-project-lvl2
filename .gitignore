@@ -1,0 +1,16 @@
+*.egg-info
+__pycache__
+dist/
+*.pyc
+.venv/
+.coverage
+coverage.xml
+.pytest_cache/
+.vim
+.vscode
+.idea/misc.xml
+.idea/modules.xml
+.idea/python-project-lvl1.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/.gitignore
