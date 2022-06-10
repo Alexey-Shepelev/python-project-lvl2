@@ -16,5 +16,5 @@ def generate_diff(file_1, file_2):
     for key in content_2.keys() - content_1.keys():
         result['+ ' + key] = content_2[key]
     sorted_result = dict(sorted(result.items(), key=lambda item: item[0][2:]))
-    return json.dumps(sorted_result, separators=('', ': '), indent=2).replace('"', '')
-
+    return json.dumps(
+        sorted_result, separators=('', ': '), indent=2).replace('"', '')

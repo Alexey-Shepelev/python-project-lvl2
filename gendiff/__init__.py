@@ -1,1 +1,1 @@
-from gendiff.diffqual import generate_diff
+from gendiff.diffqual import generate_diff   # noqa: F401
