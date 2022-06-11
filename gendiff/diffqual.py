@@ -1,7 +1,7 @@
 import json
 
 
-def generate_diff(file_1, file_2):
+def gen_diff(file_1, file_2):
     content_1 = json.load(open(file_1))
     content_2 = json.load(open(file_2))
     result = dict()
