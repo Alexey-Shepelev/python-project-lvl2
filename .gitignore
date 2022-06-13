@@ -10,3 +10,4 @@ coverage.xml
 .vscode/
 .idea/
 *.swp
+*.bkp
