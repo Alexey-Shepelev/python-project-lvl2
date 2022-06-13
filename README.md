@@ -16,5 +16,5 @@ Compare two files
 <code>gendiff -f FORMAT path/to/file1 path/to/file2</code>
 
 ## Demo:
-### Comparation of two flat .JSON files
-[![asciicast](https://asciinema.org/a/IMokyR5aPsZAvJpnhK71oxIJT.svg)](https://asciinema.org/a/IMokyR5aPsZAvJpnhK71oxIJT)
+### Comparing two flat .JSON and/or .YML files
+[![asciicast](https://asciinema.org/a/4faJtSE9Hq7VE0RFw2nkQjjuW.svg)](https://asciinema.org/a/4faJtSE9Hq7VE0RFw2nkQjjuW)
