@@ -1,4 +1,4 @@
-def get_diff(data_1: dict, data_2: dict) -> dict:
+def get_diff(data_1, data_2):
     union_dict = dict()
     for key in sorted(data_1.keys() | data_2.keys()):
         if key not in data_1:
@@ -21,7 +21,7 @@ def get_diff(data_1: dict, data_2: dict) -> dict:
                 'type': 'nested',
                 'value': get_diff(data_1[key], data_2[key])
             }
-        elif data_1[key] != data_2[key]:
+        else:   # data_1[key] != data_2[key]
             union_dict[key] = {
                 'type': 'changed',
                 'value': {
