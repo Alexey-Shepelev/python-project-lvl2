@@ -20,8 +20,9 @@ cases = [
     (NESTED_YML_1, NESTED_YML_2, NESTED_STYLISH_ANSWER)
 ]
 
+
 def get_file_content(file):
-    with open(file) as file:
+    with open(file, "r") as file:
         content = file.read()
     return content
 
@@ -31,7 +32,7 @@ def test_gen_diff(file1, file2, answer):
     assert gen_diff(file1, file2) == get_file_content(answer)
 
 
-def test_exeption():
+def test_exemption():
     with pytest.raises(Exception) as e:
         gen_diff(FLAT_YAML_1, FLAT_STYLISH_ANSWER)
     assert str(e.value) == 'Wrong file format!'

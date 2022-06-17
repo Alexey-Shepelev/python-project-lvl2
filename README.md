@@ -18,3 +18,6 @@ Compare two files
 ## Demo:
 ### Comparing two flat .JSON and/or .YML files
 [![asciicast](https://asciinema.org/a/4faJtSE9Hq7VE0RFw2nkQjjuW.svg)](https://asciinema.org/a/4faJtSE9Hq7VE0RFw2nkQjjuW)
+
+### Comparing two .JSON and/or .YML files with nested structure
+[![asciicast](https://asciinema.org/a/KG3BWfrcjkub3lUCRYBJxbOeK.svg)](https://asciinema.org/a/KG3BWfrcjkub3lUCRYBJxbOeK)
