@@ -21,3 +21,6 @@ Compare two files
 
 ### Comparing two .JSON and/or .YML files with nested structure
 [![asciicast](https://asciinema.org/a/KG3BWfrcjkub3lUCRYBJxbOeK.svg)](https://asciinema.org/a/KG3BWfrcjkub3lUCRYBJxbOeK)
+
+### Comparing two .JSON and/or .YML files: plain result
+[![asciicast](https://asciinema.org/a/ltC1NdPozqJMxINMIgwFz3nxk.svg)](https://asciinema.org/a/ltC1NdPozqJMxINMIgwFz3nxk)

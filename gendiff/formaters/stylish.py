@@ -34,7 +34,6 @@ def get_stylish(data, depth=1):
         value = sub_dict.get('value')
         if type_ == 'nested':
             result.append(f'{TAB * depth}{key}: {get_stylish(value, depth+1)}')
-            # result.append(f'{TAB * (depth - 1)}}}')
         elif type_ == 'changed':
             result.append(f'{TAB * (depth - 1)}{STATUS_TYPES["removed"]}{key}: '
                           f'{stringify(value.get("old_value"), depth + 1)}')

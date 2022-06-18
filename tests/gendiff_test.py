@@ -12,12 +12,18 @@ NESTED_YML_2 = 'tests/fixtures/nested_file2.yml'
 
 FLAT_STYLISH_ANSWER = 'tests/fixtures/flat_stylish_answer'
 NESTED_STYLISH_ANSWER = 'tests/fixtures/nested_stylish_answer'
+PLAIN_ANSWER = 'tests/fixtures/plain_answer'
+NESTED_PLAIN_ANSWER = 'tests/fixtures/nested_plain_answer'
 
 cases = [
-    (FLAT_JSON_1, FLAT_JSON_2, FLAT_STYLISH_ANSWER),
-    (FLAT_YAML_1, FLAT_YAML_2, FLAT_STYLISH_ANSWER),
-    (NESTED_JSON_1, NESTED_JSON_2, NESTED_STYLISH_ANSWER),
-    (NESTED_YML_1, NESTED_YML_2, NESTED_STYLISH_ANSWER)
+    (FLAT_JSON_1, FLAT_JSON_2, FLAT_STYLISH_ANSWER, 'stylish'),
+    (FLAT_YAML_1, FLAT_YAML_2, FLAT_STYLISH_ANSWER, 'stylish'),
+    (NESTED_JSON_1, NESTED_JSON_2, NESTED_STYLISH_ANSWER, 'stylish'),
+    (NESTED_YML_1, NESTED_YML_2, NESTED_STYLISH_ANSWER, 'stylish'),
+    (FLAT_JSON_1, FLAT_JSON_2, PLAIN_ANSWER, 'plain'),
+    (FLAT_YAML_1, FLAT_YAML_2, PLAIN_ANSWER, 'plain'),
+    (NESTED_JSON_1, NESTED_JSON_2, NESTED_PLAIN_ANSWER, 'plain'),
+    (NESTED_YML_1, NESTED_YML_2, NESTED_PLAIN_ANSWER, 'plain')
 ]
 
 
@@ -27,9 +33,9 @@ def get_file_content(file):
     return content
 
 
-@pytest.mark.parametrize('file1,file2,answer', cases)
-def test_gen_diff(file1, file2, answer):
-    assert gen_diff(file1, file2) == get_file_content(answer)
+@pytest.mark.parametrize('file1,file2,answer,format_', cases)
+def test_gen_diff(file1, file2, answer, format_):
+    assert gen_diff(file1, file2, format_) == get_file_content(answer)
 
 
 def test_exemption():
