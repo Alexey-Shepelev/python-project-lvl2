@@ -14,6 +14,8 @@ FLAT_STYLISH_ANSWER = 'tests/fixtures/flat_stylish_answer'
 NESTED_STYLISH_ANSWER = 'tests/fixtures/nested_stylish_answer'
 PLAIN_ANSWER = 'tests/fixtures/plain_answer'
 NESTED_PLAIN_ANSWER = 'tests/fixtures/nested_plain_answer'
+JSON_ANSWER = 'tests/fixtures/json_answer'
+NESTED_JSON_ANSWER = 'tests/fixtures/nested_json_answer'
 
 cases = [
     (FLAT_JSON_1, FLAT_JSON_2, FLAT_STYLISH_ANSWER, 'stylish'),
@@ -23,7 +25,11 @@ cases = [
     (FLAT_JSON_1, FLAT_JSON_2, PLAIN_ANSWER, 'plain'),
     (FLAT_YAML_1, FLAT_YAML_2, PLAIN_ANSWER, 'plain'),
     (NESTED_JSON_1, NESTED_JSON_2, NESTED_PLAIN_ANSWER, 'plain'),
-    (NESTED_YML_1, NESTED_YML_2, NESTED_PLAIN_ANSWER, 'plain')
+    (NESTED_YML_1, NESTED_YML_2, NESTED_PLAIN_ANSWER, 'plain'),
+    (FLAT_JSON_1, FLAT_JSON_2, JSON_ANSWER, 'json'),
+    (FLAT_YAML_1, FLAT_YAML_2, JSON_ANSWER, 'json'),
+    (NESTED_JSON_1, NESTED_JSON_2, NESTED_JSON_ANSWER, 'json'),
+    (NESTED_YML_1, NESTED_YML_2, NESTED_JSON_ANSWER, 'json')
 ]
 
 

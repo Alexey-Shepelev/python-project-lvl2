@@ -24,3 +24,6 @@ Compare two files
 
 ### Comparing two .JSON and/or .YML files: plain result
 [![asciicast](https://asciinema.org/a/ltC1NdPozqJMxINMIgwFz3nxk.svg)](https://asciinema.org/a/ltC1NdPozqJMxINMIgwFz3nxk)
+
+### Comparing two .JSON and/or .YML files: json result
+[![asciicast](https://asciinema.org/a/gxbOH3thrrXzkfwaXcop0dcRz.svg)](https://asciinema.org/a/gxbOH3thrrXzkfwaXcop0dcRz)
