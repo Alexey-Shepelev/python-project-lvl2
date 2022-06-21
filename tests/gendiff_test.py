@@ -1,50 +1,38 @@
 from gendiff import gen_diff
+import os.path
 import pytest
 
-FLAT_JSON_1 = 'tests/fixtures/file1.json'
-FLAT_JSON_2 = 'tests/fixtures/file2.json'
-FLAT_YAML_1 = 'tests/fixtures/file1.yml'
-FLAT_YAML_2 = 'tests/fixtures/file2.yml'
-NESTED_JSON_1 = 'tests/fixtures/nested_file1.json'
-NESTED_JSON_2 = 'tests/fixtures/nested_file2.json'
-NESTED_YML_1 = 'tests/fixtures/nested_file1.yml'
-NESTED_YML_2 = 'tests/fixtures/nested_file2.yml'
 
-FLAT_STYLISH_ANSWER = 'tests/fixtures/flat_stylish_answer'
-NESTED_STYLISH_ANSWER = 'tests/fixtures/nested_stylish_answer'
-PLAIN_ANSWER = 'tests/fixtures/plain_answer'
-NESTED_PLAIN_ANSWER = 'tests/fixtures/nested_plain_answer'
-JSON_ANSWER = 'tests/fixtures/json_answer'
-NESTED_JSON_ANSWER = 'tests/fixtures/nested_json_answer'
+def get_fixture_path(file_name):
+    current_dir = os.path.dirname(os.path.abspath('file'))
+    return os.path.join(current_dir, 'tests', 'fixtures', file_name)
+
 
 cases = [
-    (FLAT_JSON_1, FLAT_JSON_2, FLAT_STYLISH_ANSWER, 'stylish'),
-    (FLAT_YAML_1, FLAT_YAML_2, FLAT_STYLISH_ANSWER, 'stylish'),
-    (NESTED_JSON_1, NESTED_JSON_2, NESTED_STYLISH_ANSWER, 'stylish'),
-    (NESTED_YML_1, NESTED_YML_2, NESTED_STYLISH_ANSWER, 'stylish'),
-    (FLAT_JSON_1, FLAT_JSON_2, PLAIN_ANSWER, 'plain'),
-    (FLAT_YAML_1, FLAT_YAML_2, PLAIN_ANSWER, 'plain'),
-    (NESTED_JSON_1, NESTED_JSON_2, NESTED_PLAIN_ANSWER, 'plain'),
-    (NESTED_YML_1, NESTED_YML_2, NESTED_PLAIN_ANSWER, 'plain'),
-    (FLAT_JSON_1, FLAT_JSON_2, JSON_ANSWER, 'json'),
-    (FLAT_YAML_1, FLAT_YAML_2, JSON_ANSWER, 'json'),
-    (NESTED_JSON_1, NESTED_JSON_2, NESTED_JSON_ANSWER, 'json'),
-    (NESTED_YML_1, NESTED_YML_2, NESTED_JSON_ANSWER, 'json')
+    ('file1.json', 'file2.json', 'flat_stylish_answer', 'stylish'),
+    ('file1.yml', 'file2.yml', 'flat_stylish_answer', 'stylish'),
+    ('nested_file1.json', 'nested_file2.json', 'nested_stylish_answer', 'stylish'),
+    ('nested_file1.yml', 'nested_file2.yml', 'nested_stylish_answer', 'stylish'),
+    ('file1.json', 'file2.json', 'plain_answer', 'plain'),
+    ('file1.yml', 'file2.yml', 'plain_answer', 'plain'),
+    ('nested_file1.json', 'nested_file2.json', 'nested_plain_answer', 'plain'),
+    ('nested_file1.yml', 'nested_file2.yml', 'nested_plain_answer', 'plain'),
+    ('file1.json', 'file2.json', 'json_answer', 'json'),
+    ('file1.yml', 'file2.yml', 'json_answer', 'json'),
+    ('nested_file1.json', 'nested_file2.json', 'nested_json_answer', 'json'),
+    ('nested_file1.yml', 'nested_file2.yml', 'nested_json_answer', 'json')
 ]
 
 
-def get_file_content(file):
-    with open(file, "r") as file:
-        content = file.read()
-    return content
+@pytest.mark.parametrize('file1,file2,answer,format_name', cases)
+def test_gen_diff(file1, file2, answer, format_name):
+    with open(get_fixture_path(answer), 'r') as answer:
+        f1 = get_fixture_path(file1)
+        f2 = get_fixture_path(file2)
+        assert gen_diff(f1, f2, format_name) == answer.read()
 
 
-@pytest.mark.parametrize('file1,file2,answer,format_', cases)
-def test_gen_diff(file1, file2, answer, format_):
-    assert gen_diff(file1, file2, format_) == get_file_content(answer)
-
-
-def test_exemption():
+def test_exeption():
     with pytest.raises(Exception) as e:
-        gen_diff(FLAT_YAML_1, FLAT_STYLISH_ANSWER)
+        gen_diff(get_fixture_path('file1.yml'), get_fixture_path('stylish'))
     assert str(e.value) == 'Wrong file format!'
