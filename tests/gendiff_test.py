@@ -1,4 +1,4 @@
-from gendiff import gen_diff
+from gendiff import generate_diff
 import os.path
 import pytest
 
@@ -29,10 +29,10 @@ def test_gen_diff(file1, file2, answer, format_name):
     with open(get_fixture_path(answer), 'r') as answer:
         f1 = get_fixture_path(file1)
         f2 = get_fixture_path(file2)
-        assert gen_diff(f1, f2, format_name) == answer.read()
+        assert generate_diff(f1, f2, format_name) == answer.read()
 
 
 def test_exeption():
     with pytest.raises(Exception) as e:
-        gen_diff(get_fixture_path('file1.yml'), get_fixture_path('stylish'))
+        generate_diff(get_fixture_path('file1.yml'), get_fixture_path('stylish'))
     assert str(e.value) == 'Wrong file format!'
