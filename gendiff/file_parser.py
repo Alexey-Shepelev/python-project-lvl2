@@ -2,7 +2,7 @@ import json
 import yaml
 
 
-def parser(file):
+def parse(file):
     if file.endswith('.json'):
         return json.load(open(file))
     elif file.endswith('.yml') or file.endswith('.yaml'):
