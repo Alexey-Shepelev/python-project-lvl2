@@ -8,7 +8,7 @@ STATUS_TYPES = {
 }
 
 
-def convert(value):
+def to_str(value):
     """
     Convert value from Python to json/yaml format
     """
@@ -24,7 +24,7 @@ def stringify(data, depth):
             result.append(f'{TAB * depth}{key}: {stringify(value, depth + 1)}')
         result.append(f'{TAB * (depth - 1)}}}')
         return '\n'.join(result)
-    return convert(data)
+    return to_str(data)
 
 
 def get_stylish(data, depth=1):
@@ -44,3 +44,7 @@ def get_stylish(data, depth=1):
                           f'{stringify(value, depth + 1)}')
     result.append(f'{TAB * (depth - 1)}}}')
     return '\n'.join(result)
+
+
+def to_stylish(data):
+    return get_stylish(data)

@@ -1,7 +1,7 @@
 import json
 
 
-def convert(value):
+def to_str(value):
     """
     Convert value from Python to plain format
     """
@@ -24,12 +24,16 @@ def get_plain(data, parent=[]):
             result.append(get_plain(value, path))
         elif type_ == 'added':
             result.append(f'Property \'{".".join(path)}\' '
-                          f'was added with value: {convert(value)}')
+                          f'was added with value: {to_str(value)}')
         elif type_ == 'removed':
             result.append(f'Property \'{".".join(path)}\' was removed')
         elif type_ == 'changed':
             result.append(
                 f'Property \'{".".join(path)}\' was updated. '
-                f'From {convert(value.get("old_value"))} '
-                f'to {convert(value.get("new_value"))}')
+                f'From {to_str(value.get("old_value"))} '
+                f'to {to_str(value.get("new_value"))}')
     return '\n'.join(result)
+
+
+def to_plain(data):
+    return get_plain(data)

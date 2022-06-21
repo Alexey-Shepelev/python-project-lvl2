@@ -1,6 +1,6 @@
 from gendiff.file_parser import parse
 from gendiff.diff_builder import get_diff
-from gendiff.formatters import get_formatted
+from gendiff.formatter import get_formatted
 import os.path
 
 
