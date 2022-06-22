@@ -14,22 +14,22 @@ def to_str(value):
     return value
 
 
-def get_plain(data, parent=[]):
+def get_plain(data, path=''):
     result = []
     for key, sub_dict in data.items():
         type_ = sub_dict.get('type')
         value = sub_dict.get('value')
-        path = parent + [key]
+        full_path = path + f'.{str(key)}' if path else str(key)
         if type_ == 'nested':
-            result.append(get_plain(value, path))
+            result.append(get_plain(value, full_path))
         elif type_ == 'added':
-            result.append(f'Property \'{".".join(path)}\' '
+            result.append(f'Property \'{full_path}\' '
                           f'was added with value: {to_str(value)}')
         elif type_ == 'removed':
-            result.append(f'Property \'{".".join(path)}\' was removed')
+            result.append(f'Property \'{full_path}\' was removed')
         elif type_ == 'changed':
             result.append(
-                f'Property \'{".".join(path)}\' was updated. '
+                f'Property \'{full_path}\' was updated. '
                 f'From {to_str(value.get("old_value"))} '
                 f'to {to_str(value.get("new_value"))}')
     return '\n'.join(result)
