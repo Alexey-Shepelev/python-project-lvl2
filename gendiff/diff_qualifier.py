@@ -6,9 +6,10 @@ import os.path
 
 def get_data(file):
     _, ext = os.path.splitext(file)
-    ext = ext.lstrip('.')
-    data = parse(file, ext)
-    return data
+    data_format = ext.lstrip('.')
+    with open(file) as data:
+        output = parse(data, data_format)
+    return output
 
 
 def generate_diff(file_1, file_2, format_='stylish'):

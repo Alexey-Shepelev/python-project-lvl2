@@ -32,7 +32,7 @@ def test_gen_diff(file1, file2, answer, format_name):
         assert generate_diff(f1, f2, format_name) == answer.read()
 
 
-def test_exeption():
+def test_exception():
     with pytest.raises(Exception) as e:
-        generate_diff(get_fixture_path('file1.yml'), get_fixture_path('stylish'))
+        generate_diff(get_fixture_path('file1.yml'), get_fixture_path('flat_stylish_answer'))
     assert str(e.value) == 'Wrong file format!'
