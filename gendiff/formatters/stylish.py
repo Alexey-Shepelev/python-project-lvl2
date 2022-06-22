@@ -35,7 +35,7 @@ def get_stylish(data, depth=1):
         if action == 'nested':
             result.append(f'{TAB * depth}{key}: {get_stylish(value, depth+1)}')
         elif action == 'changed':
-            result.append(f'{TAB * (depth - 1)}{ACTION_STATUS["removed"]}{key}: '
+            result.append(f'{TAB * (depth-1)}{ACTION_STATUS["removed"]}{key}: '
                           f'{stringify(value.get("old_value"), depth + 1)}')
             result.append(f'{TAB * (depth - 1)}{ACTION_STATUS["added"]}{key}: '
                           f'{stringify(value.get("new_value"), depth + 1)}')
