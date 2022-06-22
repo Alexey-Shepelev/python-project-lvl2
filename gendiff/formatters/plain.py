@@ -7,9 +7,9 @@ def to_str(value):
     """
     if value is None or isinstance(value, bool):
         return json.dumps(value)
-    elif isinstance(value, str):
+    if isinstance(value, str):
         return f"'{value}'"
-    elif isinstance(value, dict):
+    if isinstance(value, dict):
         return '[complex value]'
     return value
 
