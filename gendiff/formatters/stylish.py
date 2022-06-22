@@ -1,7 +1,7 @@
 import json
 
 TAB = '    '
-STATUS_TYPES = {
+ACTION_STATUS = {
     'added': '  + ',
     'removed': '  - ',
     'unchanged': '    '
@@ -30,17 +30,17 @@ def stringify(data, depth):
 def get_stylish(data, depth=1):
     result = ['{']
     for key, sub_dict in data.items():
-        type_ = sub_dict.get('type')
+        action = sub_dict.get('action')
         value = sub_dict.get('value')
-        if type_ == 'nested':
+        if action == 'nested':
             result.append(f'{TAB * depth}{key}: {get_stylish(value, depth+1)}')
-        elif type_ == 'changed':
-            result.append(f'{TAB * (depth - 1)}{STATUS_TYPES["removed"]}{key}: '
+        elif action == 'changed':
+            result.append(f'{TAB * (depth - 1)}{ACTION_STATUS["removed"]}{key}: '
                           f'{stringify(value.get("old_value"), depth + 1)}')
-            result.append(f'{TAB * (depth - 1)}{STATUS_TYPES["added"]}{key}: '
+            result.append(f'{TAB * (depth - 1)}{ACTION_STATUS["added"]}{key}: '
                           f'{stringify(value.get("new_value"), depth + 1)}')
         else:
-            result.append(f'{TAB * (depth - 1)}{STATUS_TYPES[type_]}{key}: '
+            result.append(f'{TAB * (depth - 1)}{ACTION_STATUS[action]}{key}: '
                           f'{stringify(value, depth + 1)}')
     result.append(f'{TAB * (depth - 1)}}}')
     return '\n'.join(result)

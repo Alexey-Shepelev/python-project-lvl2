@@ -1,44 +1,44 @@
 {
   "common": {
-    "type": "nested",
+    "action": "nested",
     "value": {
       "follow": {
-        "type": "added",
+        "action": "added",
         "value": false
       },
       "setting1": {
-        "type": "unchanged",
+        "action": "unchanged",
         "value": "Value 1"
       },
       "setting2": {
-        "type": "removed",
+        "action": "removed",
         "value": 200
       },
       "setting3": {
-        "type": "changed",
+        "action": "changed",
         "value": {
           "old_value": true,
           "new_value": null
         }
       },
       "setting4": {
-        "type": "added",
+        "action": "added",
         "value": "blah blah"
       },
       "setting5": {
-        "type": "added",
+        "action": "added",
         "value": {
           "key5": "value5"
         }
       },
       "setting6": {
-        "type": "nested",
+        "action": "nested",
         "value": {
           "doge": {
-            "type": "nested",
+            "action": "nested",
             "value": {
               "wow": {
-                "type": "changed",
+                "action": "changed",
                 "value": {
                   "old_value": "",
                   "new_value": "so much"
@@ -47,11 +47,11 @@
             }
           },
           "key": {
-            "type": "unchanged",
+            "action": "unchanged",
             "value": "value"
           },
           "ops": {
-            "type": "added",
+            "action": "added",
             "value": "vops"
           }
         }
@@ -59,21 +59,21 @@
     }
   },
   "group1": {
-    "type": "nested",
+    "action": "nested",
     "value": {
       "baz": {
-        "type": "changed",
+        "action": "changed",
         "value": {
           "old_value": "bas",
           "new_value": "bars"
         }
       },
       "foo": {
-        "type": "unchanged",
+        "action": "unchanged",
         "value": "bar"
       },
       "nest": {
-        "type": "changed",
+        "action": "changed",
         "value": {
           "old_value": {
             "key": "value"
@@ -84,7 +84,7 @@
     }
   },
   "group2": {
-    "type": "removed",
+    "action": "removed",
     "value": {
       "abc": 12345,
       "deep": {
@@ -93,7 +93,7 @@
     }
   },
   "group3": {
-    "type": "added",
+    "action": "added",
     "value": {
       "deep": {
         "id": {
